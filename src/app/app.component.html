@@ -1,21 +1,124 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+   {{ title }}
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+  
+  <td width="638" align="center" valign="top" class="arial-10-gris">
+    <span class="arial-24-noir-b">CONVERTISSEUR DISTANCES</span>
+    <br><br>
+    <table width="638" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr><td class="arial-12-gris">
+    Combien de pieds forment un mètre ? Et si monsieur Untel mesure 1 m 95, combien cela représente-t-il de pieds ? Le calcul en mètres ou en pieds, via notre convertisseur, s'effectue instantanément.  Indiquez un chiffre dans l'un des champs et la conversion apparaît automatiquement dans l'autre champ.
+    </td></tr>
+    <tr><td height="55">
+    <script>
+    function forceValidFloat(n)
+    {
+        if(n.length == 0) return '';
+        var valids = '0123456789';
+        var hasDot = false;
+        var r = '';
+        var c;
+        for(var i = 0; i < n.length; ++i)
+        {
+            c = n.charAt(i);
+            if(c == '-' && r.length == 0)
+            {
+                r += '-';
+            }
+            else if((c == '.' || c == ',') && !hasDot)
+            {
+                r += (r.length == 0 || r == '-') ? '0.' : '.';
+                hasDot = true;
+            }
+            else if(valids.indexOf(c) != -1)
+            {
+                r += c;
+            }
+        }
+    
+        return r;
+    }
+    
+    function convertCtoF()
+    {
+        document.t.f.value = '';
+        document.t.c.value = forceValidFloat(document.t.c.value);
+        if(document.t.c.value.length == 0 ||
+           document.t.c.value == '-' ||
+           document.t.c.value == '-0' ||
+           document.t.c.value == '-0.') return;
+        if(document.t.c.value.charAt(document.t.c.value.length-1) != '.')
+            document.t.c.value = document.t.c.value%10000;
+        var temp = (parseFloat(document.t.c.value)*3.2810).toPrecision(8);
+        while(temp.indexOf('.') != -1 && (temp.charAt(temp.length-1) == '0' || temp.charAt(temp.length-1) == '.'))
+            temp = temp.substr(0, temp.length-1);
+        document.t.f.value = temp;
+    }
+    
+    function convertFtoC()
+    {
+        document.t.c.value = '';
+        document.t.f.value = forceValidFloat(document.t.f.value);
+        if(document.t.f.value.length == 0 ||
+           document.t.f.value == '-' ||
+           document.t.f.value == '-0' ||
+           document.t.f.value == '-0.') return;
+        if(document.t.f.value.charAt(document.t.f.value.length-1) != '.')
+            document.t.f.value = document.t.f.value%10000;
+        var temp = ((parseFloat(document.t.f.value)/3.2810)).toPrecision(8);
+        while(temp.indexOf('.') != -1 && (temp.charAt(temp.length-1) == '0' || temp.charAt(temp.length-1) == '.'))
+            temp = temp.substr(0, temp.length-1);
+        document.t.c.value = temp;
+    }
+    
+    </script>
+    </td></tr>
+    </tbody></table>
+    <form name="t" onsubmit="return false;" style="display:inline">
+    <table width="627" border="0" cellspacing="0" cellpadding="0"><tbody><tr>
+    <td width="227" height="49" background="images/back-temperature.gif">
+    
+    <table width="227" border="0" cellspacing="0" cellpadding="0"><tbody><tr>
+    <td width="15">&nbsp;</td>
+    <td width="212"><input name="c" maxlength="10" onkeyup="convertCtoF()" onblur="convertCtoF()" onclick="convertCtoF()" class="form-temperature"></td>
+    </tr></tbody></table>
+    
+    </td>
+    <td width="72" align="center" class="arial-16-bleu">Mètres</td>
+    <td width="52"><img src="../images/fleche.png"></td>
+    <td width="227" background="images/back-temperature.gif">
+    
+    <table width="227" border="0" cellspacing="0" cellpadding="0"><tbody><tr>
+    <td width="15">&nbsp;</td>
+    <td width="212"><input name="f" maxlength="10" onkeyup="convertFtoC()" onblur="convertFtoC()" onclick="convertFtoC()" class="form-temperature"></td>
+    </tr></tbody></table>
+    
+    </td>
+    <td width="49" align="right" class="arial-16-bleu">Pieds</td>
+    </tr></tbody></table>
+    </form>
+    <table width="638" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr><td height="55"></td></tr>
+    <tr><td class="arial-12-gris">
+    <table width="350" border="0" align="left" cellpadding="4" cellspacing="0"><tbody><tr><td>
+    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Le-convertisseur 336 -->
+    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-9982563458553196" data-ad-slot="4295240151"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </td></tr></tbody></table>
+    Dès l'Antiquité, l'être humain a éprouvé la nécessité de calculer les distances. D'abord en prenant pour repère l'itinéraire solaire, ensuite en se servant de son propre corps comme instrument de mesure. Le pas, la main, le pouce, la portée visuelle… Partout en Europe, l'on adopta les unités corporelles pour définir les distances. Coudée, aune, toise, pied, pouce, main, etc., ne déterminaient pas de manière exacte, cependant, les distances. 
+    <br><br><br>
+    Si l'on tient compte que cette méthode était fort hasardeuse, puisque  différente selon l'individu qui l'appliquait, on comprend qu'il ait fallu attendre l'instauration de standards spécifiques avant de parler véritablement de système de mesures. C'est vers 1790 que l'on décide en France de déterminer scientifiquement tout un système de poids et mesures, selon les résultats de recherches effectuées par des géomètres de renom. C'est ainsi qu'un premier mètre fit son entrée en scène, en 1795, sur le continent européen.
+    </td></tr></tbody></table>
+    <br><br><br><br><br><br>
+    
+    </td>
+  
+<app-distances></app-distances>
+<app-poids></app-poids>
+<app-temperature></app-temperature>
 <router-outlet></router-outlet>
