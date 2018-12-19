@@ -1,10 +1,32 @@
-<p>
-  poids
-</p>
-.</p>
-</div>
-<div>
- <input type="text" name="poids" (keyup)="converte($event)"> <label>Kilos</label>   -> <input type="text" name="poids" value="{{set}}"> <label>Livres</label>
-</div>
-<div>
-  <p>
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+<body>
+        <div style="text-align:center">
+                <h1 style="text-align:center;">
+                   Convertisseur Poids
+                </h1>
+                
+                <input type="text" name="kilo" (keyup)="convertir($event)"> <label>Kilo</label>   = <input type="text" name="livre" value="{{poid}}"> <label>Livre</label>
+                
+                
+              </div>
+              <div>
+                <img width="300" alt="Angular Logo" src="../assets/logo.png" style="width:250px;height: 150px; margin-right: 100px">
+              </div>
+  <div class='container'>
+    <div id='content' class='row-fluid'>
+   
+      <div class='span8 main'>
+        <p>Combien de pieds forment un mètre ? Et si monsieur Untel mesure 1 m 95, combien cela représente-t-il de pieds ? Le calcul en mètres ou en pieds, via notre convertisseur, s'effectue instantanément. Indiquez un chiffre dans l'un des champs et la conversion apparaît automatiquement dans l'autre champ.
+
+                Dès l'Antiquité, l'être humain a éprouvé la nécessité de calculer les distances. D'abord en prenant pour repère l'itinéraire solaire, ensuite en se servant de son propre corps comme instrument de mesure. Le pas, la main, le pouce, la portée visuelle… Partout en Europe, l'on adopta les unités corporelles pour définir les distances. Coudée, aune, toise, pied, pouce, main, etc., ne déterminaient pas de manière exacte, cependant, les distances.
+                
+                Si l'on tient compte que cette méthode était fort hasardeuse, puisque différente selon l'individu qui l'appliquait, on comprend qu'il ait fallu attendre l'instauration de standards spécifiques avant de parler véritablement de système de mesures. C'est vers 1790 que l'on décide en France de déterminer scientifiquement tout un système de poids et mesures, selon les résultats de recherches effectuées par des géomètres de renom. C'est ainsi qu'un premier mètre fit son entrée en scène, en 1795, sur le continent européen..<p> 
+
+        </div>
+     
+    </div>
+  </div>
+</body>

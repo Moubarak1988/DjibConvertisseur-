@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConvertisseurService } from '../convertisseur.service';
 
 @Component({
   selector: 'app-distances',
@@ -6,24 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./distances.component.css']
 })
 export class DistancesComponent implements OnInit {
-  set= '';
+  distance= '';
 
 
-  converte = (event: any) => {
+  convertir = (event: any) => {
   
     if (event.target.value !='') {
-      this.set = this.conv.metreEnPied(event.target.value).toFixed(2);
+      this.distance = this.convert.metrePied(event.target.value).toFixed(2);
     } else {
-      this.set = '';
+      this.distance = '';
     }
   
       }
   
-    constructor(private conv: ConvertisseurService) {
+    constructor(private convert: ConvertisseurService) {
   
     }
-  
-    ngOnInit() {
-    }
-  
+  ngOnInit() {
   }
+
+}

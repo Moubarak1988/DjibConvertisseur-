@@ -2,30 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { ConvertisseurService } from '../convertisseur.service';
 
 @Component({
-  selector: 'app-convertisseur-temperatures',
-  templateUrl: './convertisseur-temperatures.component.html',
-  styleUrls: ['./convertisseur-temperatures.component.css']
+  selector: 'app-temperature',
+  templateUrl: './temperature.component.html',
+  styleUrls: ['./temperature.component.css']
 })
-export class ConvertisseurTemperaturesComponent implements OnInit {
+export class TemperatureComponent implements OnInit {
+  temp= '';
 
-  set= '';
 
-
-  converte = (event: any) => {
+  convertir = (event: any) => {
   
     if (event.target.value !='') {
-      this.set = this.conv.celsiusEnFahrenheit(event.target.value).toFixed(2);
+      this.temp = this.convert.celsiusFahrenheit(event.target.value).toFixed(2);
     } else {
-      this.set = '';
+      this.temp = '';
     }
   
       }
   
-    constructor(private conv: ConvertisseurService) {
+    constructor(private convert: ConvertisseurService) {
   
     }
-  
-    ngOnInit() {
-    }
-  
+
+  ngOnInit() {
   }
+
+}
