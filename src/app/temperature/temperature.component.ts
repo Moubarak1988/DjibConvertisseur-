@@ -11,21 +11,21 @@ export class ConvertisseurTemperaturesComponent implements OnInit {
   set= '';
 
 
-converte = (event: any) => {
-
-  if (event.target.value !='') {
-    this.set = this.conv.celsiusEnFahrenheit(event.target.value).toFixed(2);
-  } else {
-    this.set = '';
-  }
-
+  converte = (event: any) => {
+  
+    if (event.target.value !='') {
+      this.set = this.conv.celsiusEnFahrenheit(event.target.value).toFixed(2);
+    } else {
+      this.set = '';
     }
-
-  constructor(private conv: ConvertisseurService) {
-
+  
+      }
+  
+    constructor(private conv: ConvertisseurService) {
+  
+    }
+  
+    ngOnInit() {
+    }
+  
   }
-
-  ngOnInit() {
-  }
-
-}
